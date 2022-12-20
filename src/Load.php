@@ -1,6 +1,8 @@
 <?php
 
-namespace QUADLAYERS\WP_Plugin_Suggestions;
+namespace QuadLayers\WP_Plugin_Suggestions;
+
+use QuadLayers\WP_Plugin_Suggestions\Page;
 
 class Load {
 

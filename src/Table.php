@@ -1,6 +1,6 @@
 <?php
 
-namespace QUADLAYERS\WP_Plugin_Suggestions;
+namespace QuadLayers\WP_Plugin_Suggestions;
 
 require_once ABSPATH . 'wp-admin/includes/class-wp-plugin-install-list-table.php';
 

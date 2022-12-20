@@ -1,6 +1,8 @@
 <?php
 
-namespace QUADLAYERS\WP_Plugin_Suggestions;
+namespace QuadLayers\WP_Plugin_Suggestions;
+
+use QuadLayers\WP_Plugin_Suggestions\Table;
 
 class Page {
 
@@ -65,7 +67,7 @@ class Page {
 			'manage_options',
 			$suggestions_menu_slug,
 			function () {
-				$wp_list_table = new \QuadLayers\WP_Plugin_Suggestions\Table( $this->plugin_data );
+				$wp_list_table = new Table( $this->plugin_data );
 				include __DIR__ . '/view/suggestions.php';
 			},
 			99
