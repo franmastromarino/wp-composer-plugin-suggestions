@@ -1,4 +1,23 @@
 <style>
+	.wrap.wrap {
+		position: relative;
+		margin: 25px 40px 0 20px;
+		max-width: 1200px;
+	}
+	.wp-badge.wp-badge {
+		background: #006bff url(<?php echo esc_url( plugins_url( '../../assets/img/logo.jpg', __FILE__ ) ); ?>) no-repeat;
+		background-position: top center;
+		background-size: 130px 130px;
+		color: #fff;
+		font-size: 14px;
+		text-align: center;
+		font-weight: 600;
+		margin: 5px 0 0;
+		padding-top: 120px;
+		height: 40px;
+		display: inline-block;
+		width: 140px;
+	}
 	@media screen and (max-width: 2299px) and (min-width: 1600px) {
 		#the-list {
 			display: flex;
@@ -7,25 +26,6 @@
 		.plugin-card {
 			margin: 8px !important;
 			width: calc(50% - 4px - 16px) !important;
-		}
-		.wrap {
-			position: relative;
-			margin: 25px 40px 0 20px;
-			max-width: 1200px;
-		}
-		.wp-badge {
-			background: #006bff url(<?php esc_url( plugins_url( '../../assets/img/logo.jpg', __FILE__ ) ); ?>) no-repeat;
-			background-position: top center;
-			background-size: 130px 130px;
-			color: #fff;
-			font-size: 14px;
-			text-align: center;
-			font-weight: 600;
-			margin: 5px 0 0;
-			padding-top: 120px;
-			height: 40px;
-			display: inline-block;
-			width: 140px;
 		}
 	}
 </style>
