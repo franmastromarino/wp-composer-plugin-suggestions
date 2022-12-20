@@ -14,10 +14,11 @@ class Load {
 		'per_page'         => 36,
 		'exclude'          => array(),
 		'parent_menu_slug' => null,
+		'promote_links'    => array(),
 	);
 
 	/**
-	 * Undocumented variable
+	 * Page model
 	 *
 	 * @var Page
 	 */

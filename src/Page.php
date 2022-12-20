@@ -28,7 +28,6 @@ class Page {
 			99
 		);
 
-		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 		add_action( 'admin_init', array( $this, 'add_redirect' ) );
 		add_filter( 'network_admin_url', array( $this, 'network_admin_url' ), 10, 2 );
 	}
@@ -118,8 +117,8 @@ class Page {
 	 */
 	public function add_redirect() {
 		if ( isset( $_REQUEST['activate'] ) && $_REQUEST['activate'] == 'true' ) {
-			if ( wp_get_referer() == admin_url( 'admin.php?page=' . PWB_PREFIX . '_suggestions' ) ) {
-				wp_safe_redirect( admin_url( 'admin.php?page=' . PWB_PREFIX . '_suggestions' ) );
+			if ( wp_get_referer() == admin_url( 'admin.php?page=' . $this->get_suggestions_menu_slug() ) ) {
+				wp_safe_redirect( admin_url( 'admin.php?page=' . $this->get_suggestions_menu_slug() ) );
 				exit();
 			}
 		}

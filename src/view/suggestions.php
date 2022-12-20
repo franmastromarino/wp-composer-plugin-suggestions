@@ -13,6 +13,20 @@
 			margin: 25px 40px 0 20px;
 			max-width: 1200px;
 		}
+		.wp-badge {
+			background: #006bff url(<?php esc_url( plugins_url( '../../assets/img/logo.jpg', __FILE__ ) ); ?>) no-repeat;
+			background-position: top center;
+			background-size: 130px 130px;
+			color: #fff;
+			font-size: 14px;
+			text-align: center;
+			font-weight: 600;
+			margin: 5px 0 0;
+			padding-top: 120px;
+			height: 40px;
+			display: inline-block;
+			width: 140px;
+		}
 	}
 </style>
 <div class="wrap about-wrap full-width-layout">
@@ -20,30 +34,35 @@
 		<?php esc_html_e( 'Suggestions', 'wp-plugin-suggestions' ); ?>
 	</h1>
 	<p class="about-text">
-		<?php printf( esc_html__( 'Thanks for using our product! We recommend these extensions that will add new features to stand out your business and improve your sales.', 'wp-plugin-suggestions' ), esc_html( PWB_PLUGIN_NAME ) ); ?>
+		<?php esc_html_e( 'Thanks for using our product! We recommend these extensions that will add new features to stand out your business and improve your sales.', 'wp-plugin-suggestions' ); ?>
 	</p>
 	<p class="about-text">
-		<?php printf( '<a href="%s" target="_blank">%s</a>', esc_html( PWB_PURCHASE_URL ), esc_html__( 'Purchase', 'wp-plugin-suggestions' ) ); ?></a> |
-		<?php printf( '<a href="%s" target="_blank">%s</a>', esc_html( PWB_DOCUMENTATION_URL ), esc_html__( 'Documentation', 'wp-plugin-suggestions' ) ); ?></a>
+	<?php
+	if ( ! empty( $this->plugin_data['promote_links'] ) ) {
+		$promote_links = $this->plugin_data['promote_links'];
+		foreach ( $promote_links as $index => $link ) {
+			if ( $index > 0 ) {
+				echo ' | ';
+			}
+			$link = wp_parse_args(
+				$link,
+				array(
+					'text'   => '',
+					'url'    => '',
+					'target' => '_blank',
+				)
+			);
+			echo sprintf( '<a href="%s" target="%s">%s</a>', esc_url( $link['url'] ), esc_attr( $link['target'] ), esc_html( $link['text'] ) );
+		}
+	}
+	?>
 	</p>
 	<?php
 		printf(
-			'<a href="%s" target="_blank"><div style="
-				background: #006bff url(%s) no-repeat;
-				background-position: top center;
-				background-size: 130px 130px;
-				color: #fff;
-				font-size: 14px;
-				text-align: center;
-				font-weight: 600;
-				margin: 5px 0 0;
-				padding-top: 120px;
-				height: 40px;
-				display: inline-block;
-				width: 140px;
-				" class="wp-badge">%s</div></a>',
-			'https://quadlayers.com/?utm_source=pwb_admin',
-			esc_url( plugins_url( '/assets/img/logo.jpg', PWB_PLUGIN_FILE ) ),
+			'<a href="%s" target="_blank">
+				<divclass="wp-badge">%s</div>
+			</a>',
+			'https://quadlayers.com/?utm_source=WordPress&utm_medium=page&utm_campaign=suggestions',
 			esc_html__( 'QuadLayers', 'wp-plugin-suggestions' )
 		);
 		?>
