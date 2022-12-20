@@ -60,7 +60,7 @@
 	<?php
 		printf(
 			'<a href="%s" target="_blank">
-				<divclass="wp-badge">%s</div>
+				<div class="wp-badge">%s</div>
 			</a>',
 			'https://quadlayers.com/?utm_source=WordPress&utm_medium=page&utm_campaign=suggestions',
 			esc_html__( 'QuadLayers', 'wp-plugin-suggestions' )
