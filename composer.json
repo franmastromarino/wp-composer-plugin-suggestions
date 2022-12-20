@@ -1,0 +1,31 @@
+{
+	"name": "quadlayers/wp-plugin-suggestions",
+	"description": "WP Plugin Suggestions",
+	"keywords": [
+		"WordPress",
+		"Admin",
+		"Plugin",
+		"Widget"
+	],
+	"type": "jetpack-library",
+	"require": {
+		"php": ">=7.4.0"
+	},
+	"license": "GPL-3.0",
+	"authors": [
+		{
+			"name": "QuadLayers",
+			"email": "noreply@quadlayers.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"QuadLayers\\WP_Plugin_Suggestions\\": "src/"
+		},
+		"files": []
+	},
+	"extra": {
+		"textdomain": "wp-plugin-suggestions"
+	}
+}
