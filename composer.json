@@ -8,9 +8,6 @@
 		"Widget"
 	],
 	"type": "jetpack-library",
-	"require": {
-		"php": ">=7.4.0"
-	},
 	"license": "GPL-3.0",
 	"authors": [
 		{
@@ -19,6 +16,11 @@
 		}
 	],
 	"minimum-stability": "stable",
+	"config": {
+		"platform": {
+			"php": "7.1.0"
+		}
+	},
 	"autoload": {
 		"psr-4": {
 			"QuadLayers\\WP_Plugin_Suggestions\\": "src/"
@@ -26,5 +28,8 @@
 	},
 	"extra": {
 		"textdomain": "wp-plugin-suggestions"
+	},
+	"require": {
+		"php": ">=7.1.0"
 	}
 }
