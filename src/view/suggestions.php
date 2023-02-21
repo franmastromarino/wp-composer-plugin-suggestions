@@ -1,3 +1,16 @@
+<?php
+/**
+ * QuadLayers WP Plugin Suggestions
+ *
+ * @package   quadlayers/wp-plugin-suggestions
+ * @author    QuadLayers
+ * @link      https://github.com/quadlayers/wp-plugin-suggestions
+ * @copyright Copyright (c) 2023
+ * @license   GPL-3.0
+ */
+
+?>
+
 <style>
 	.wrap.wrap {
 		position: relative;

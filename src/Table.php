@@ -1,42 +1,79 @@
 <?php
+/**
+ * QuadLayers WP Plugin Suggestions
+ *
+ * @package   quadlayers/wp-plugin-suggestions
+ * @author    QuadLayers
+ * @link      https://github.com/quadlayers/wp-plugin-suggestions
+ * @copyright Copyright (c) 2023
+ * @license   GPL-3.0
+ */
 
 namespace QuadLayers\WP_Plugin_Suggestions;
 
 require_once ABSPATH . 'wp-admin/includes/class-wp-plugin-install-list-table.php';
 
+/**
+ * Class Table
+ */
 class Table extends \WP_Plugin_Install_List_Table {
 
 	/**
-	 * @var array
+	 * Plugins data.
+	 *
+	 * @var array Plugin data.
 	 */
 	private $plugins_data = array();
 
+	/**
+	 * Table constructor.
+	 *
+	 * @param array $plugins_data Plugins data.
+	 */
 	public function __construct( array $plugins_data = array() ) {
 		$this->plugins_data = $plugins_data;
 		parent::__construct();
 	}
 
-	public function self_admin_url( $url, $path ) {
-		if ( strpos( $url, 'tab=plugin-information' ) !== false ) {
-			$url = network_admin_url( $path );
-		}
-
-		return $url;
-	}
-
-	public function network_admin_url( $url, $path ) {
-		if ( strpos( $url, 'plugins.php' ) !== false ) {
-			$url = self_admin_url( $path );
-		}
-		return $url;
-	}
-
+	/**
+	 * Hook into the display_rows action to make url changes.
+	 *
+	 * @return void
+	 */
 	public function display_rows() {
-		add_filter( 'self_admin_url', array( $this, 'self_admin_url' ), 10, 2 );
-		add_filter( 'network_admin_url', array( $this, 'network_admin_url' ), 10, 2 );
+		add_filter(
+			'self_admin_url',
+			function( $url, $path ) {
+				if ( strpos( $url, 'tab=plugin-information' ) !== false ) {
+					$url = network_admin_url( $path );
+				}
+
+			return $url;
+			},
+			10,
+			2
+		);
+
+		add_filter(
+			'network_admin_url',
+			function ( $url, $path ) {
+				if ( strpos( $url, 'plugins.php' ) !== false ) {
+					$url = self_admin_url( $path );
+				}
+			return $url;
+			},
+			10,
+			2
+		);
+
 		parent::display_rows();
 	}
 
+	/**
+	 * Get the transient key.
+	 *
+	 * @return string
+	 */
 	private function get_transient_key() {
 
 		$key = md5( serialize( $this->plugins_data ) );
@@ -44,6 +81,13 @@ class Table extends \WP_Plugin_Install_List_Table {
 		return 'quadlayers_plugin_suggestions_' . $key;
 	}
 
+	/**
+	 * Remove excluded plugins.
+	 *
+	 * @param array $plugins Plugins.
+	 *
+	 * @return array
+	 */
 	private function remove_excluded_plugins( $plugins ) {
 
 		if ( empty( $this->plugins_data['exclude'] ) ) {
@@ -59,6 +103,11 @@ class Table extends \WP_Plugin_Install_List_Table {
 		return $plugins;
 	}
 
+	/**
+	 * Get plugins.
+	 *
+	 * @return array|mixed|object
+	 */
 	public function get_plugins() {
 
 		$tk = $this->get_transient_key();
@@ -86,6 +135,11 @@ class Table extends \WP_Plugin_Install_List_Table {
 		return $plugins;
 	}
 
+	/**
+	 * Prepare items.
+	 *
+	 * @return void
+	 */
 	public function prepare_items() {
 		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 

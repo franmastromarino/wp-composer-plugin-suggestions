@@ -1,11 +1,35 @@
 <?php
+/**
+ * QuadLayers WP Plugin Suggestions
+ *
+ * @package   quadlayers/wp-plugin-suggestions
+ * @author    QuadLayers
+ * @link      https://github.com/quadlayers/wp-plugin-suggestions
+ * @copyright Copyright (c) 2023
+ * @license   GPL-3.0
+ */
 
 namespace QuadLayers\WP_Plugin_Suggestions;
 
 use QuadLayers\WP_Plugin_Suggestions\Table;
 
+/**
+ * Class Page
+ */
 class Page {
 
+	/**
+	 * Plugin data
+	 *
+	 * @var array
+	 */
+	private $plugin_data;
+
+	/**
+	 * Page constructor.
+	 *
+	 * @param array $plugin_data Plugin data.
+	 */
 	public function __construct( array $plugin_data = array() ) {
 
 		$this->plugin_data = $plugin_data;
@@ -32,6 +56,11 @@ class Page {
 		add_filter( 'network_admin_url', array( $this, 'network_admin_url' ), 10, 2 );
 	}
 
+	/**
+	 * Create parent admin menu if is not exists
+	 *
+	 * @return void
+	 */
 	public function add_menu() {
 		global $_parent_pages;
 
@@ -94,9 +123,9 @@ class Page {
 	/**
 	 * Fix network admin url for plugin installation
 	 *
-	 * @param [type] $url
-	 * @param [type] $path
-	 * @return void
+	 * @param [type] $url site url.
+	 * @param [type] $path path.
+	 * @return string
 	 */
 	public function network_admin_url( $url, $path ) {
 		if ( wp_doing_ajax() && ! is_network_admin() ) {
