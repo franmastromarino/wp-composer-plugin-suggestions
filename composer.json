@@ -31,11 +31,9 @@
 		}
 	},
 	"require": {
-		"php": ">=7.1.0",
-		"composer-plugin-api": "^2.1.0"
+		"php": ">=7.1.0"
 	},
 	"require-dev": {
-		"composer/composer": "^2.1",
 		"wp-coding-standards/wpcs": "^2.3.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "phpcompatibility/phpcompatibility-wp": "^2.1.0"
